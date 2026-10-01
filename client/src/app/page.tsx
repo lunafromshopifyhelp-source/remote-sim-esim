@@ -4,8 +4,390 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="page">
-      
+    <main className="page home-page">
+      <style jsx global>{`
+        .home-page {
+          overflow-x: hidden;
+        }
+
+        .home-header-inner {
+          min-height: 72px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+        }
+
+        .home-nav {
+          display: flex;
+          align-items: center;
+          gap: 22px;
+        }
+
+        .home-hero {
+          padding: 85px 0 75px;
+          background: linear-gradient(
+            135deg,
+            #f7f9fc 0%,
+            #eef5ff 55%,
+            #eafafa 100%
+          );
+        }
+
+        .home-hero-grid {
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 60px;
+          align-items: center;
+        }
+
+        .home-hero-title {
+          margin: 0;
+          max-width: 720px;
+          font-size: clamp(40px, 6vw, 64px);
+          line-height: 1.05;
+          letter-spacing: -2px;
+          color: var(--primary);
+          font-weight: 800;
+        }
+
+        .home-hero-text {
+          max-width: 650px;
+          margin-top: 24px;
+          font-size: 18px;
+          line-height: 1.7;
+          color: var(--muted);
+        }
+
+        .home-hero-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-top: 30px;
+        }
+
+        .home-hero-card {
+          padding: 28px;
+          background: white;
+        }
+
+        .home-section {
+          padding: 75px 0;
+        }
+
+        .home-two-column {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 55px;
+          align-items: center;
+        }
+
+        .home-section-title {
+          margin: 10px 0 0;
+          font-size: 36px;
+          line-height: 1.2;
+          color: var(--primary);
+        }
+
+        .home-section-text {
+          margin-top: 18px;
+          color: var(--muted);
+          line-height: 1.8;
+          font-size: 15px;
+        }
+
+        .home-about {
+          background: white;
+          border-top: 1px solid var(--border);
+          border-bottom: 1px solid var(--border);
+        }
+
+        .home-centered-intro {
+          max-width: 760px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .home-three-column {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 20px;
+          margin-top: 45px;
+        }
+
+        .home-four-column {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 16px;
+          margin-top: 42px;
+        }
+
+        .home-network-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 16px;
+          margin-top: 38px;
+        }
+
+        .home-bigger-picture {
+          background: linear-gradient(
+            135deg,
+            #eef5ff 0%,
+            #f7f9fc 100%
+          );
+        }
+
+        .home-security {
+          background: var(--primary);
+          color: white;
+        }
+
+        .home-security-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          align-items: center;
+        }
+
+        .home-security-title {
+          margin: 10px 0 0;
+          font-size: 36px;
+        }
+
+        .home-security-text {
+          margin-top: 18px;
+          color: rgba(255, 255, 255, 0.75);
+          line-height: 1.8;
+        }
+
+        .home-cta {
+          padding: 75px 0;
+          background: linear-gradient(
+            135deg,
+            var(--primary),
+            #0b2854
+          );
+          color: white;
+          text-align: center;
+        }
+
+        .home-cta-inner {
+          max-width: 750px;
+          margin: 0 auto;
+        }
+
+        .home-cta-title {
+          margin: 0;
+          font-size: 38px;
+        }
+
+        .home-cta-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 12px;
+          flex-wrap: wrap;
+          margin-top: 28px;
+        }
+
+        .home-footer-grid {
+          display: grid;
+          grid-template-columns: 1.5fr 1fr 1fr;
+          gap: 45px;
+        }
+
+        .home-footer-bottom {
+          margin-top: 40px;
+          padding-top: 20px;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          display: flex;
+          justify-content: space-between;
+          gap: 15px;
+          flex-wrap: wrap;
+          color: rgba(255, 255, 255, 0.45);
+          font-size: 11px;
+        }
+
+        .home-footer-credit {
+          margin-top: 18px;
+          padding-top: 16px;
+          border-top: 1px solid rgba(255, 255, 255, 0.06);
+          text-align: center;
+          color: rgba(255, 255, 255, 0.4);
+          font-size: 11px;
+        }
+
+        @media (max-width: 900px) {
+          .home-hero-grid,
+          .home-two-column,
+          .home-security-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .home-hero-grid {
+            gap: 40px;
+          }
+
+          .home-three-column {
+            grid-template-columns: 1fr;
+          }
+
+          .home-four-column {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .home-network-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .home-footer-grid {
+            grid-template-columns: 1.5fr 1fr;
+          }
+        }
+
+        @media (max-width: 700px) {
+          .home-header-inner {
+            min-height: 64px;
+          }
+
+          .home-nav {
+            gap: 12px;
+          }
+
+          .home-nav a:not(.btn) {
+            display: none;
+          }
+
+          .home-nav .btn {
+            min-height: 40px;
+            padding: 0 13px;
+            font-size: 12px;
+          }
+
+          .home-hero {
+            padding: 55px 0 50px;
+          }
+
+          .home-hero-title {
+            font-size: clamp(36px, 11vw, 52px);
+            letter-spacing: -1.5px;
+          }
+
+          .home-hero-text {
+            font-size: 16px;
+            line-height: 1.65;
+          }
+
+          .home-hero-buttons {
+            flex-direction: column;
+          }
+
+          .home-hero-buttons .btn {
+            width: 100%;
+          }
+
+          .home-hero-card {
+            padding: 20px;
+          }
+
+          .home-section {
+            padding: 55px 0;
+          }
+
+          .home-section-title {
+            font-size: 29px;
+          }
+
+          .home-four-column {
+            grid-template-columns: 1fr;
+            margin-top: 30px;
+          }
+
+          .home-network-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .home-security-title {
+            font-size: 30px;
+          }
+
+          .home-cta {
+            padding: 55px 0;
+          }
+
+          .home-cta-title {
+            font-size: 30px;
+          }
+
+          .home-footer-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+
+          .home-footer-bottom {
+            flex-direction: column;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .home-hero-title {
+            font-size: 36px;
+          }
+
+          .home-hero-card {
+            padding: 17px;
+          }
+
+          .home-hero-card h3 {
+            font-size: 17px !important;
+          }
+
+          .home-hero-card > div:first-child {
+            gap: 10px !important;
+          }
+
+          .home-hero-card > div:first-child > div:first-child {
+            min-width: 0;
+          }
+
+          .home-hero-card > div:first-child h3 {
+            line-height: 1.35;
+          }
+
+          .home-network-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+          }
+
+          .home-network-grid .card {
+            min-height: 80px !important;
+          }
+
+          .home-section-title {
+            font-size: 27px;
+          }
+
+          .home-centered-intro h2 {
+            font-size: 29px !important;
+          }
+
+          .home-three-column {
+            margin-top: 30px;
+          }
+
+          .home-cta-title {
+            font-size: 28px;
+          }
+
+          .home-cta-buttons {
+            flex-direction: column;
+          }
+
+          .home-cta-buttons .btn {
+            width: 100%;
+          }
+        }
+      `}</style>
+
       <header
         style={{
           position: "sticky",
@@ -16,16 +398,7 @@ export default function Home() {
           borderBottom: "1px solid var(--border)",
         }}
       >
-        <div
-          className="app-container"
-          style={{
-            minHeight: "72px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "20px",
-          }}
-        >
+        <div className="app-container home-header-inner">
           <Link
             href="/"
             style={{
@@ -35,6 +408,7 @@ export default function Home() {
               fontWeight: 800,
               color: "var(--primary)",
               fontSize: "20px",
+              flexShrink: 0,
             }}
           >
             <span
@@ -53,17 +427,10 @@ export default function Home() {
             >
               SE
             </span>
-
             SIMe
           </Link>
 
-          <nav
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "22px",
-            }}
-          >
+          <nav className="home-nav">
             <a
               href="#how-it-works"
               style={{
@@ -123,23 +490,8 @@ export default function Home() {
         </div>
       </header>
 
-      
-      <section
-        style={{
-          padding: "85px 0 75px",
-          background:
-            "linear-gradient(135deg, #f7f9fc 0%, #eef5ff 55%, #eafafa 100%)",
-        }}
-      >
-        <div
-          className="app-container"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.1fr 0.9fr",
-            gap: "60px",
-            alignItems: "center",
-          }}
-        >
+      <section className="home-hero">
+        <div className="app-container home-hero-grid">
           <div>
             <div
               style={{
@@ -160,17 +512,7 @@ export default function Home() {
               SIMe V1 Prototype
             </div>
 
-            <h1
-              style={{
-                margin: 0,
-                maxWidth: "720px",
-                fontSize: "clamp(40px, 6vw, 64px)",
-                lineHeight: 1.05,
-                letterSpacing: "-2px",
-                color: "var(--primary)",
-                fontWeight: 800,
-              }}
-            >
+            <h1 className="home-hero-title">
               Bringing the
               <br />
               <span style={{ color: "var(--accent)" }}>
@@ -180,15 +522,7 @@ export default function Home() {
               journey closer to you.
             </h1>
 
-            <p
-              style={{
-                maxWidth: "650px",
-                marginTop: "24px",
-                fontSize: "18px",
-                lineHeight: 1.7,
-                color: "var(--muted)",
-              }}
-            >
+            <p className="home-hero-text">
               SIMe is being developed to make the physical SIM
               to eSIM conversion journey more digital, guided and
               convenient — reducing unnecessary trips to network
@@ -196,14 +530,7 @@ export default function Home() {
               remotely.
             </p>
 
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "12px",
-                marginTop: "30px",
-              }}
-            >
+            <div className="home-hero-buttons">
               <Link href="/signup" className="btn btn-primary">
                 Create Account
                 <span>→</span>
@@ -229,19 +556,13 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Hero visual */}
-          <div
-            className="card"
-            style={{
-              padding: "28px",
-              background: "white",
-            }}
-          >
+          <div className="card home-hero-card">
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
+                gap: "12px",
                 marginBottom: "25px",
               }}
             >
@@ -270,6 +591,7 @@ export default function Home() {
                 style={{
                   width: "46px",
                   height: "46px",
+                  flexShrink: 0,
                   borderRadius: "13px",
                   background: "var(--primary-light)",
                   color: "var(--primary)",
@@ -327,7 +649,7 @@ export default function Home() {
                   {number}
                 </span>
 
-                <div>
+                <div style={{ minWidth: 0 }}>
                   <div
                     style={{
                       fontSize: "14px",
@@ -371,17 +693,9 @@ export default function Home() {
         </div>
       </section>
 
-      
-      <section style={{ padding: "75px 0" }}>
+      <section className="home-section">
         <div className="app-container">
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "55px",
-              alignItems: "center",
-            }}
-          >
+          <div className="home-two-column">
             <div>
               <p
                 style={{
@@ -396,26 +710,12 @@ export default function Home() {
                 The idea
               </p>
 
-              <h2
-                style={{
-                  margin: "10px 0 0",
-                  fontSize: "36px",
-                  lineHeight: 1.2,
-                  color: "var(--primary)",
-                }}
-              >
+              <h2 className="home-section-title">
                 Why should a digital device process always begin
                 with a physical visit?
               </h2>
 
-              <p
-                style={{
-                  marginTop: "18px",
-                  color: "var(--muted)",
-                  lineHeight: 1.8,
-                  fontSize: "15px",
-                }}
-              >
+              <p className="home-section-text">
                 Moving from a physical SIM to an eSIM can involve
                 several steps, including subscriber identification,
                 verification, device compatibility and network-side
@@ -465,6 +765,7 @@ export default function Home() {
                     fontSize: "16px",
                     fontWeight: 700,
                     color: "var(--primary)",
+                    lineHeight: 1.5,
                   }}
                 >
                   Customer → Service Centre → Verification →
@@ -472,11 +773,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div
-                style={{
-                  paddingTop: "20px",
-                }}
-              >
+              <div style={{ paddingTop: "20px" }}>
                 <div
                   style={{
                     color: "var(--accent)",
@@ -493,6 +790,7 @@ export default function Home() {
                     fontSize: "16px",
                     fontWeight: 700,
                     color: "var(--primary)",
+                    lineHeight: 1.5,
                   }}
                 >
                   Customer → SIMe → Authorized Network Process
@@ -516,23 +814,9 @@ export default function Home() {
         </div>
       </section>
 
-      
-      <section
-        style={{
-          padding: "75px 0",
-          background: "white",
-          borderTop: "1px solid var(--border)",
-          borderBottom: "1px solid var(--border)",
-        }}
-      >
+      <section className="home-section home-about">
         <div className="app-container">
-          <div
-            style={{
-              maxWidth: "760px",
-              margin: "0 auto",
-              textAlign: "center",
-            }}
-          >
+          <div className="home-centered-intro">
             <p
               style={{
                 margin: 0,
@@ -546,13 +830,7 @@ export default function Home() {
               About SIMe
             </p>
 
-            <h2
-              style={{
-                margin: "10px 0 0",
-                fontSize: "36px",
-                color: "var(--primary)",
-              }}
-            >
+            <h2 className="home-section-title">
               A digital layer between the customer and the
               conversion process
             </h2>
@@ -573,15 +851,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(3, minmax(0, 1fr))",
-              gap: "20px",
-              marginTop: "45px",
-            }}
-          >
+          <div className="home-three-column">
             {[
               {
                 title: "Remote-first",
@@ -629,13 +899,7 @@ export default function Home() {
         </div>
       </section>
 
-      
-      <section
-        id="how-it-works"
-        style={{
-          padding: "75px 0",
-        }}
-      >
+      <section id="how-it-works" className="home-section">
         <div className="app-container">
           <div style={{ maxWidth: "720px" }}>
             <p
@@ -651,13 +915,7 @@ export default function Home() {
               How It Works
             </p>
 
-            <h2
-              style={{
-                margin: "10px 0 0",
-                fontSize: "36px",
-                color: "var(--primary)",
-              }}
-            >
+            <h2 className="home-section-title">
               A guided journey from physical SIM to eSIM
             </h2>
 
@@ -674,15 +932,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(4, minmax(0, 1fr))",
-              gap: "16px",
-              marginTop: "42px",
-            }}
-          >
+          <div className="home-four-column">
             {[
               [
                 "01",
@@ -777,11 +1027,10 @@ export default function Home() {
         </div>
       </section>
 
-     
       <section
         id="networks"
+        className="home-section"
         style={{
-          padding: "75px 0",
           background: "white",
           borderTop: "1px solid var(--border)",
           borderBottom: "1px solid var(--border)",
@@ -802,13 +1051,7 @@ export default function Home() {
               V1
             </p>
 
-            <h2
-              style={{
-                margin: "10px 0 0",
-                fontSize: "36px",
-                color: "var(--primary)",
-              }}
-            >
+            <h2 className="home-section-title">
               Supported Networks
             </h2>
 
@@ -825,34 +1068,24 @@ export default function Home() {
             </p>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(4, minmax(0, 1fr))",
-              gap: "16px",
-              marginTop: "38px",
-            }}
-          >
-            {["MTN", "Airtel", "Glo", "T2"].map(
-              (network) => (
-                <div
-                  key={network}
-                  className="card"
-                  style={{
-                    minHeight: "100px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "20px",
-                    fontWeight: 800,
-                    color: "var(--primary)",
-                  }}
-                >
-                  {network}
-                </div>
-              )
-            )}
+          <div className="home-network-grid">
+            {["MTN", "Airtel", "Glo", "T2"].map((network) => (
+              <div
+                key={network}
+                className="card"
+                style={{
+                  minHeight: "100px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "20px",
+                  fontWeight: 800,
+                  color: "var(--primary)",
+                }}
+              >
+                {network}
+              </div>
+            ))}
           </div>
 
           <p
@@ -870,22 +1103,9 @@ export default function Home() {
         </div>
       </section>
 
-      
-      <section
-        style={{
-          padding: "75px 0",
-          background:
-            "linear-gradient(135deg, #eef5ff 0%, #f7f9fc 100%)",
-        }}
-      >
+      <section className="home-section home-bigger-picture">
         <div className="app-container">
-          <div
-            style={{
-              maxWidth: "760px",
-              margin: "0 auto",
-              textAlign: "center",
-            }}
-          >
+          <div className="home-centered-intro">
             <p
               style={{
                 margin: 0,
@@ -899,13 +1119,7 @@ export default function Home() {
               The Bigger Picture
             </p>
 
-            <h2
-              style={{
-                margin: "10px 0 0",
-                fontSize: "36px",
-                color: "var(--primary)",
-              }}
-            >
+            <h2 className="home-section-title">
               What SIMe is trying to change
             </h2>
 
@@ -926,13 +1140,11 @@ export default function Home() {
           </div>
 
           <div
+            className="home-three-column"
             style={{
               maxWidth: "900px",
-              margin: "42px auto 0",
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(3, minmax(0, 1fr))",
-              gap: "18px",
+              marginLeft: "auto",
+              marginRight: "auto",
             }}
           >
             {[
@@ -976,23 +1188,8 @@ export default function Home() {
         </div>
       </section>
 
-      
-      <section
-        style={{
-          padding: "70px 0",
-          background: "var(--primary)",
-          color: "white",
-        }}
-      >
-        <div
-          className="app-container"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "60px",
-            alignItems: "center",
-          }}
-        >
+      <section className="home-section home-security">
+        <div className="app-container home-security-grid">
           <div>
             <p
               style={{
@@ -1007,22 +1204,11 @@ export default function Home() {
               Security
             </p>
 
-            <h2
-              style={{
-                margin: "10px 0 0",
-                fontSize: "36px",
-              }}
-            >
+            <h2 className="home-security-title">
               Built with sensitive information in mind.
             </h2>
 
-            <p
-              style={{
-                marginTop: "18px",
-                color: "rgba(255,255,255,0.75)",
-                lineHeight: 1.8,
-              }}
-            >
+            <p className="home-security-text">
               Identity and subscriber information must be handled
               responsibly. SIMe is designed so that sensitive
               information is collected inside the authenticated
@@ -1061,8 +1247,7 @@ export default function Home() {
         </div>
       </section>
 
-      
-      <section style={{ padding: "65px 0" }}>
+      <section className="home-section">
         <div className="app-container">
           <div
             style={{
@@ -1104,8 +1289,8 @@ export default function Home() {
 
       <section
         id="faq"
+        className="home-section"
         style={{
-          padding: "70px 0",
           background: "white",
           borderTop: "1px solid var(--border)",
         }}
@@ -1125,13 +1310,7 @@ export default function Home() {
               FAQ
             </p>
 
-            <h2
-              style={{
-                margin: "10px 0 0",
-                fontSize: "36px",
-                color: "var(--primary)",
-              }}
-            >
+            <h2 className="home-section-title">
               Frequently Asked Questions
             </h2>
           </div>
@@ -1217,25 +1396,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        style={{
-          padding: "75px 0",
-          background:
-            "linear-gradient(135deg, var(--primary), #0b2854)",
-          color: "white",
-          textAlign: "center",
-        }}
-      >
-        <div
-          className="app-container"
-          style={{ maxWidth: "750px" }}
-        >
-          <h2
-            style={{
-              margin: 0,
-              fontSize: "38px",
-            }}
-          >
+      <section className="home-cta">
+        <div className="app-container home-cta-inner">
+          <h2 className="home-cta-title">
             The future of the journey starts here.
           </h2>
 
@@ -1250,15 +1413,7 @@ export default function Home() {
             experience.
           </p>
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "12px",
-              flexWrap: "wrap",
-              marginTop: "28px",
-            }}
-          >
+          <div className="home-cta-buttons">
             <Link
               href="/signup"
               className="btn"
@@ -1286,7 +1441,6 @@ export default function Home() {
         </div>
       </section>
 
-      
       <footer
         style={{
           background: "#071a36",
@@ -1295,13 +1449,7 @@ export default function Home() {
         }}
       >
         <div className="app-container">
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1.5fr 1fr 1fr",
-              gap: "45px",
-            }}
-          >
+          <div className="home-footer-grid">
             <div>
               <div
                 style={{
@@ -1368,24 +1516,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Copyright */}
-          <div
-            style={{
-              marginTop: "40px",
-              paddingTop: "20px",
-              borderTop:
-                "1px solid rgba(255,255,255,0.1)",
-              display: "flex",
-              justifyContent: "space-between",
-              gap: "15px",
-              flexWrap: "wrap",
-              color: "rgba(255,255,255,0.45)",
-              fontSize: "11px",
-            }}
-          >
-            <span>
-              © 2026 SIMe. V1 Prototype.
-            </span>
+          <div className="home-footer-bottom">
+            <span>© 2026 SIMe. V1 Prototype.</span>
 
             <span>
               SIMe does not independently activate carrier
@@ -1393,18 +1525,7 @@ export default function Home() {
             </span>
           </div>
 
-         
-          <div
-            style={{
-              marginTop: "18px",
-              paddingTop: "16px",
-              borderTop:
-                "1px solid rgba(255,255,255,0.06)",
-              textAlign: "center",
-              color: "rgba(255,255,255,0.4)",
-              fontSize: "11px",
-            }}
-          >
+          <div className="home-footer-credit">
             Creative @Joel Benson • Dev @Simon Chimezie •
             Prototype @SIMe
           </div>
