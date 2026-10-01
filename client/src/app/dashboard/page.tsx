@@ -36,7 +36,7 @@ export default function DashboardPage() {
     const loadDashboard = async () => {
       try {
         const userResponse = await fetch(
-          "${process.env.NEXT_PUBLIC_API_URL}/api/auth/me",
+          `${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -55,7 +55,7 @@ export default function DashboardPage() {
         setUser(userData.user);
 
         const conversionResponse = await fetch(
-          "${process.env.NEXT_PUBLIC_API_URL}/api/conversions/my-requests",
+            "${process.env.NEXT_PUBLIC_API_URL}/api/conversions/my-requests",
           {
             headers: {
               Authorization: `Bearer ${token}`,

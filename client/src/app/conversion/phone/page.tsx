@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function PhoneNumberPage() {
@@ -8,8 +8,18 @@ export default function PhoneNumberPage() {
 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
+  const [selectedCarrier, setSelectedCarrier] = useState("");
 
-  const selectedCarrier = sessionStorage.getItem("selectedCarrier");
+  useEffect(() => {
+    const storedCarrier = sessionStorage.getItem("selectedCarrier");
+
+    if (!storedCarrier) {
+      router.push("/conversion");
+      return;
+    }
+
+    setSelectedCarrier(storedCarrier);
+  }, [router]);
 
   const handleContinue = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
