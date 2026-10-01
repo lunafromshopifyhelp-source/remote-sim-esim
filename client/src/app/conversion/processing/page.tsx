@@ -75,7 +75,7 @@ export default function ProcessingPage() {
     const loadConversion = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/conversions/${conversionId}`,
+          `${process.env.NEXT_PUBLIC_API_URL}/api/conversions/${conversionId}`,
           {
             method: "GET",
             headers: {
@@ -135,7 +135,7 @@ export default function ProcessingPage() {
     const timer = setTimeout(async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/conversions/${conversionId}/process`,
+          `${process.env.NEXT_PUBLIC_API_URL}/api/conversions/${conversionId}/process`,
           {
             method: "POST",
             headers: {

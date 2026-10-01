@@ -66,7 +66,7 @@ export default function ReviewPage() {
       }
 
       const response = await fetch(
-        "http://localhost:5000/api/conversions",
+        "${process.env.NEXT_PUBLIC_API_URL}/api/conversions",
         {
           method: "POST",
 
